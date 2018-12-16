@@ -1,5 +1,10 @@
 # NgElement
 
+Cloned from https://grokonez.com/frontend/angular/angular-6-elements-use-angular-elements-example-to-build-custom-elements-example.
+
+The fix for the issue from upgrading to Angular 7 is here: https://github.com/angular/angular/issues/24556
+- by changing the "target":"es5" in the tsconfig.json to "target":"es2015".
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
 ## Development server

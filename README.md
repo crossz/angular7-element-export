@@ -1,11 +1,41 @@
 # NgElement
 
+### Background
 Cloned from https://grokonez.com/frontend/angular/angular-6-elements-use-angular-elements-example-to-build-custom-elements-example.
 
 The fix for the issue from upgrading to Angular 7 is here: https://github.com/angular/angular/issues/24556
 - by changing the "target":"es5" in the tsconfig.json to "target":"es2015".
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
+
+### Export Component To An Element
+
+1. npm install fs-extra concat
+2. create elements-build.js file
+
+>     const fs = require('fs-extra');
+>     const concat = require('concat');
+>      
+>     (async function build() {
+>         const files = [
+>             './dist/AngularElement/runtime.js',
+>             './dist/AngularElement/polyfills.js',
+>             './dist/AngularElement/scripts.js',
+>             './dist/AngularElement/main.js',
+>         ]
+>      
+>         await fs.ensureDir('elements');
+>      
+>         await concat(files, 'elements/jsa-counter.js');
+>      
+>         await fs.copyFile('./dist/AngularElement/styles.css', 'elements/styles.css');
+>      
+>     })()
+
+3. In package.json, add a build command to NPM scripts: 
+    > "build:elements": "ng build --prod --output-hashing none && node elements-build.js"
+4. npm run build:elements
+5. With jsa-counter.js file, we can use jsa-counter element in any HTML page, see anyhtml.html (explore it in http-server dir).
 
 ## Development server
 
